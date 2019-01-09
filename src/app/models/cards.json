@@ -1,0 +1,8 @@
+{
+  "cards": [
+    {"situation": "Get up", "score": 2},
+    {"situation": "Brush teeth", "score": 3},
+    {"situation": "Take a shower", "score": 4},
+    {"situation": "Check e-mail", "score": 5}
+  ]
+}

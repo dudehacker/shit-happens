@@ -1,18 +1,27 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { DragDropModule } from '@angular/cdk/drag-drop';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { BoardComponent } from './board/board.component';
+import {GameManagerService} from './services/game-manager.service'
+import {MatButtonModule} from '@angular/material/button';
+import {MatBadgeModule} from '@angular/material/badge';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    BoardComponent
   ],
   imports: [
     BrowserModule,
+    DragDropModule,
+    MatButtonModule,
+    MatBadgeModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [GameManagerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

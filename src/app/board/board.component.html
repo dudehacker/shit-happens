@@ -1,0 +1,35 @@
+<h1><span>Round {{gm.getRound()}}</span>   -  Player {{playerName}}</h1>
+
+<div class="example-container">
+  <h2>Draw</h2>
+
+  <div
+    cdkDropList
+    #todoList="cdkDropList"
+    [cdkDropListData]="deckList"
+    [cdkDropListConnectedTo]="[doneList]"
+    class="example-list"
+    (cdkDropListDropped)="drop($event)">
+    <div class="example-box" *ngFor="let card of deckList" cdkDrag>{{card.situation}}</div>
+  </div>
+</div>
+
+<div class="example-container">
+  <h2>Hand</h2>
+
+  <div
+    cdkDropList
+    #doneList="cdkDropList"
+    [cdkDropListData]="hand"
+    [cdkDropListConnectedTo]="[todoList]"
+    class="example-list"
+    (cdkDropListDropped)="drop($event)">
+    <div class="example-box" *ngFor="let card of hand" cdkDrag>
+        {{card.situation}}<span matBadge="{{card.score}}" matBadgeOverlap="true" *ngIf="card.visible"></span>
+    </div>
+  </div>
+</div>
+
+<div>
+  <button mat-raised-button color="primary" (click)="onClick()">Submit</button>
+  </div>
