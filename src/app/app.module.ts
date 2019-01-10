@@ -7,12 +7,14 @@ import { BoardComponent } from './board/board.component';
 import {GameManagerService} from './services/game-manager.service'
 import {MatButtonModule} from '@angular/material/button';
 import {MatBadgeModule} from '@angular/material/badge';
+import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    BoardComponent
+    BoardComponent,
+    LeaderboardComponent
   ],
   imports: [
     BrowserModule,

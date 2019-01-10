@@ -24,6 +24,7 @@ export class BoardComponent {
                         event.previousIndex,
                         event.currentIndex);
     }
+    this.sortHand();
   }
 
   constructor(private gm: GameManagerService){
@@ -40,7 +41,10 @@ export class BoardComponent {
 
   sortHand(): void{
     this.hand.sort(function (a, b){
-      return a.score - b.score
+      if (!a.visible || !b.visible){
+        return 0;
+      }
+      return a.score - b.score;
     });
   }
 
