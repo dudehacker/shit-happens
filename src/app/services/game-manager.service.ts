@@ -15,25 +15,22 @@ export class GameManagerService {
   readonly MAX_PLAYERS = 4;
   readonly START_HAND_SIZE = 3;
   readonly END_HAND_SIZE = 7;
+  readonly MAX_CARDS;
 
 
   constructor() {
     this.initialiseDeck();
+    this.MAX_CARDS = this.deck.length;
     this.initialisePlayers();
   }
 
   getStats(){
     // console.log("getStats() called");
-    let output = [];
     let sorted = this.players.slice(0);
     sorted.sort(function (a,b) {
-      return b.hand.length - a.hand.length
+      return b.score - a.score
     });
-    for (let i = 1; i<= this.players.length; i++){
-      output.push({position: i ,name: "Player "+i, score: sorted[i-1].hand.length});
-    }
-
-    return output;
+    return sorted;
   }
 
   getRound(){
@@ -56,10 +53,13 @@ export class GameManagerService {
 
   checkGameOver(){
     // console.log(this.getCurrentPlayer().hand.length);
-    return (this.getCurrentPlayer().hand.length === this.END_HAND_SIZE);
+    return (this.getCurrentPlayer().score === this.END_HAND_SIZE);
   }
 
-  endTurn(){
+  endTurn(valid: boolean){
+    if (valid){
+      this.getCurrentPlayer().score++;
+    }
     if (this.checkGameOver()){
       //TODO end the game
       return;
@@ -94,7 +94,7 @@ export class GameManagerService {
       for (let j = 0; j < this.START_HAND_SIZE; j++){
         hand.push(this.deck.pop());
       }
-      this.players.push({name: ""+(i+1),hand: hand});
+      this.players.push({name: "Team "+(i+1),hand: hand, score: hand.length});
     }
     this.currPlayer = 0;
   }

@@ -84,7 +84,7 @@ export class BoardComponent {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      _this.gm.endTurn();
+      _this.gm.endTurn(valid);
       _this.init();
     });
 }

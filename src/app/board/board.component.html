@@ -1,5 +1,11 @@
-<app-leaderboard></app-leaderboard>
-<div class="example-container">
+<mat-grid-list cols="2" rowHeight="2:1">
+
+  <mat-grid-tile [colspan]="1" [rowspan]="1">
+    <app-leaderboard></app-leaderboard>
+  </mat-grid-tile>
+
+  <mat-grid-tile [colspan]="1" [rowspan]="1">
+    <div class="example-container">
   <h2>Draw</h2>
 
   <div
@@ -11,11 +17,10 @@
     (cdkDropListDropped)="drop($event)">
     <div class="example-box new" *ngFor="let card of deckList" cdkDrag>{{card.situation}}</div>
   </div>
-</div>
+    </div>
 
-<div class="example-container">
+    <div class="example-container">
   <h2>Hand</h2>
-
   <div
     cdkDropList
     #doneList="cdkDropList"
@@ -27,8 +32,13 @@
         {{card.situation}}<span matBadge="{{card.score}}" matBadgeOverlap="true" *ngIf="card.visible"></span>
     </div>
   </div>
-</div>
+    </div>
+  </mat-grid-tile>
 
-<div>
-  <button mat-raised-button color="primary" (click)="onClick()">Submit</button>
-  </div>
+  <mat-grid-tile [colspan]="2" [rowspan]="1">
+    <div>
+      <button mat-raised-button color="primary" (click)="onClick()">Submit</button>
+    </div>
+  </mat-grid-tile>
+
+</mat-grid-list>

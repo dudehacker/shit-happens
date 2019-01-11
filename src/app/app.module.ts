@@ -11,6 +11,7 @@ import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatTableModule} from '@angular/material/table';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import {MatTableModule} from '@angular/material/table';
     MatButtonModule,
     MatBadgeModule,
     MatDialogModule,
+    MatGridListModule,
     MatTableModule,
     AppRoutingModule
   ],
