@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import {Card} from '../models/Card';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 import {GameManagerService} from '../services/game-manager.service'
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
 @Component({
   selector: 'app-board',
@@ -12,12 +13,15 @@ export class BoardComponent {
   deckList: Card[] = [];
   newCard: Card;
   hand : Card[];
-  playerName: string;
 
   drop(event: CdkDragDrop<string[]>) {
+    // console.log(event);
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
+      if (event.container.id === "cdk-drop-list-0" ){
+        return;
+      }
       // console.log(this.hand);
       transferArrayItem(event.previousContainer.data,
                         event.container.data,
@@ -27,13 +31,12 @@ export class BoardComponent {
     this.sortHand();
   }
 
-  constructor(private gm: GameManagerService){
+  constructor(private gm: GameManagerService, public dialog: MatDialog){
     this.init();
   }
 
   init(){
     this.hand = this.gm.getCurrentPlayer().hand;
-    this.playerName = this.gm.getCurrentPlayer().name;
     this.sortHand();
     this.newCard = this.gm.drawNewCard();
     this.deckList.push(this.newCard);
@@ -57,6 +60,7 @@ export class BoardComponent {
     if (valid){
       this.newCard.visible = true;
       // TODO display alert for success
+
     } else {
       // remove the new card from hand
       let _this = this;
@@ -66,9 +70,26 @@ export class BoardComponent {
       this.hand.splice(i, 1);
       // TODO display alert for fail
     }
-    this.gm.endTurn();
-    this.init();
+    this.openDialog(valid);
+
+
   }
+
+  openDialog(valid: boolean): void {
+    let _this = this;
+    const dialogRef = this.dialog.open(DialogComponent, {
+      data: {
+        valid: valid,
+        card: _this.newCard
+      }
+    });
+  
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      _this.gm.endTurn();
+      _this.init();
+    });
+}
 
   validateHand():boolean{
     let c = -1;
@@ -82,4 +103,24 @@ export class BoardComponent {
     return true;
   }
 
+}
+
+export interface DialogData {
+  valid: boolean;
+  card: Card;
+}
+
+
+@Component({
+  selector: 'app-dialog',
+  templateUrl: '../dialog/dialog.component.html',
+  styleUrls: ['../dialog/dialog.component.css']
+})
+export class DialogComponent {
+
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public data: DialogData
+  ) {
+        console.log("dialog: " + data.valid);
+  }
 }

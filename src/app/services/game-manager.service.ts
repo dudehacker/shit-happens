@@ -53,6 +53,7 @@ export class GameManagerService {
       this.currPlayer=0;
       this.roundCounter++;
     }
+    console.log("player " + this.currPlayer);
   }
 
   initialiseDeck(){

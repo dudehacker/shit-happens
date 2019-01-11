@@ -6,10 +6,14 @@ import {GameManagerService} from '../services/game-manager.service'
   styleUrls: ['./leaderboard.component.css']
 })
 export class LeaderboardComponent implements OnInit {
+    playerName: string;
 
-  constructor(private gm: GameManagerService) { }
+  constructor(private gm: GameManagerService) {
+
+  }
 
   ngOnInit() {
+
   }
 
 }

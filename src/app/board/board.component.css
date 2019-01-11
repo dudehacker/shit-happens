@@ -20,6 +20,11 @@
   color: white;
 }
 
+div button{
+  display: block;
+  margin: auto;
+}
+
 .example-box.cdk-drag{
     font-size: 1.2em;
     background-color: #abffdf
