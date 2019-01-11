@@ -22,8 +22,26 @@ export class GameManagerService {
     this.initialisePlayers();
   }
 
+  getStats(){
+    // console.log("getStats() called");
+    let output = [];
+    let sorted = this.players.slice(0);
+    sorted.sort(function (a,b) {
+      return b.hand.length - a.hand.length
+    });
+    for (let i = 1; i<= this.players.length; i++){
+      output.push({position: i ,name: "Player "+i, score: sorted[i-1].hand.length});
+    }
+
+    return output;
+  }
+
   getRound(){
     return this.roundCounter;
+  }
+
+  getPlayers(){
+    return this.players;
   }
 
   drawNewCard(){
@@ -53,7 +71,6 @@ export class GameManagerService {
       this.currPlayer=0;
       this.roundCounter++;
     }
-    console.log("player " + this.currPlayer);
   }
 
   initialiseDeck(){

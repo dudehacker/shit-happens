@@ -7,9 +7,11 @@ import {GameManagerService} from '../services/game-manager.service'
 })
 export class LeaderboardComponent implements OnInit {
     playerName: string;
+    displayedColumns: string[] = ['position', 'name', 'score'];
+    dataSource: any[];
 
   constructor(private gm: GameManagerService) {
-
+      this.dataSource = this.gm.getStats();
   }
 
   ngOnInit() {

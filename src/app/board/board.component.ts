@@ -56,7 +56,6 @@ export class BoardComponent {
       return;
     }
     let valid = this.validateHand();
-    console.log(valid);
     if (valid){
       this.newCard.visible = true;
       // TODO display alert for success
@@ -83,9 +82,8 @@ export class BoardComponent {
         card: _this.newCard
       }
     });
-  
+
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
       _this.gm.endTurn();
       _this.init();
     });
@@ -118,9 +116,13 @@ export interface DialogData {
 })
 export class DialogComponent {
 
-  constructor(
-    @Inject(MAT_DIALOG_DATA) public data: DialogData
-  ) {
-        console.log("dialog: " + data.valid);
+  constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+
+  displayMsg(): string{
+    if (this.data.valid){
+      return "Good guess"
+    } else {
+      return "Better luck next time"
+    }
   }
 }

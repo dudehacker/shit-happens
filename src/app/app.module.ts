@@ -10,6 +10,7 @@ import {MatBadgeModule} from '@angular/material/badge';
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     MatButtonModule,
     MatBadgeModule,
     MatDialogModule,
+    MatTableModule,
     AppRoutingModule
   ],
   providers: [GameManagerService],
