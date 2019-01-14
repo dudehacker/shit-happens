@@ -32,7 +32,7 @@ export class BoardComponent {
     this.sortHand();
   }
 
-  constructor(private gm: GameManagerService, public dialog: MatDialog, private router: Router ){
+  constructor(public gm: GameManagerService, public dialog: MatDialog, private router: Router ){
     console.log("board constructor");
     this.init();
   }
