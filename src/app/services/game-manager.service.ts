@@ -16,7 +16,7 @@ export class GameManagerService {
   readonly MAX_PLAYERS = 4;
   readonly START_HAND_SIZE = 3;
   readonly END_HAND_SIZE = 4;
-  readonly MAX_CARDS;
+  public MAX_CARDS;
 
 
   constructor() {
