@@ -12,13 +12,17 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatTableModule} from '@angular/material/table';
 import {MatGridListModule} from '@angular/material/grid-list';
+import { HomeComponent } from './home/home.component';
+import { ResultComponent } from './result/result.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BoardComponent,
     DialogComponent,
-    LeaderboardComponent
+    LeaderboardComponent,
+    HomeComponent,
+    ResultComponent
   ],
   entryComponents:[
     DialogComponent
