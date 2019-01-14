@@ -1,9 +1,30 @@
-.example-container {
-  width: 400px;
-  max-width: 100%;
-  margin: 0 25px 25px 0;
-  display: inline-block;
-  vertical-align: top;
+.wrapper{
+  position: relative;
+  margin-top: 50px;
+}
+
+.menu{
+  position: absolute;
+  margin-left: 20px;
+  left: 0px;
+  width: 200px;
+}
+
+.list{
+  float: left;
+  width: 40%;
+  margin-right: 50px;
+  margin-bottom: 50px;
+}
+
+.content{
+  margin-left: 300px;
+  width: 70%;
+}
+
+.header{
+  margin-bottom: 100px;
+  text-align: center;
 }
 
 .example-list {
@@ -21,8 +42,7 @@
 }
 
 div button{
-  float: left;
-  margin: auto;
+  margin-top: 50px;
 }
 
 .example-box.cdk-drag{

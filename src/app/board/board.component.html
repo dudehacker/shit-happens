@@ -1,35 +1,36 @@
-<h1><span>Round {{gm.getRound()}}</span>   -  {{gm.getCurrentPlayer().name}}</h1>
-<p>Sort cards from 1 to {{gm.MAX_CARDS}}</p>
-<p>First player to {{gm.END_HAND_SIZE}} cards win!!!</p>
-<!-- <div *ngFor="let player of gm.getPlayers(); index as i">
-    Player {{i+1}} - {{player.hand.length}}
-</div> -->
-<hr>
+<div class="wrapper">
 
-<mat-grid-list cols="2" rowHeight="2:1">
+  <div class="menu">
 
-  <mat-grid-tile [colspan]="1" [rowspan]="1">
-    <app-leaderboard></app-leaderboard>
-  </mat-grid-tile>
-
-  <mat-grid-tile [colspan]="1" [rowspan]="1">
-    <div class="example-container">
-  <h2>Draw</h2>
-
-  <div
-    cdkDropList
-    #todoList="cdkDropList"
-    [cdkDropListData]="deckList"
-    [cdkDropListConnectedTo]="[doneList]"
-    class="example-list"
-    (cdkDropListDropped)="drop($event)">
-    <div class="example-box new" *ngFor="let card of deckList" cdkDrag>{{card.situation}}</div>
-  </div>
+    <div class='header'>
+      <h1>Round {{gm.getRound()}}</h1>
+      <h3>{{gm.getCurrentPlayer().name}}</h3>
+      <p>Sort cards from 1 to {{gm.MAX_CARDS}}</p>
+      <p>First player to {{gm.END_HAND_SIZE}} cards win!!!</p>
     </div>
 
-    <div class="example-container">
+    <app-leaderboard></app-leaderboard>
+  </div>
+
+  <div class='content'>
+
+
+  <div class="list">
+    <h2>Draw</h2>
+    <div
+      cdkDropList
+      #todoList="cdkDropList"
+      [cdkDropListData]="deckList"
+      [cdkDropListConnectedTo]="[doneList]"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)">
+    <div class="example-box new" *ngFor="let card of deckList" cdkDrag>{{card.situation}}</div>
+    </div>
+  </div>
+
+<div class="list">
   <h2>Hand</h2>
-  <div
+    <div
     cdkDropList
     #doneList="cdkDropList"
     [cdkDropListData]="hand"
@@ -41,13 +42,9 @@
         <!-- {{card.situation}} <span class="badge badge-secondary" *ngIf="card.visible">{{card.score}}</span> -->
     </div>
   </div>
-    </div>
-  </mat-grid-tile>
+</div>
 
-  <mat-grid-tile [colspan]="2" [rowspan]="1">
-    <div>
-      <button type="button" class="btn btn-primary btn-lg" (click)="onClick()">Submit</button>
-    </div>
-  </mat-grid-tile>
+<button type="button" class="btn btn-primary btn-lg btn-block" (click)="onClick()">Submit</button>
 
-</mat-grid-list>
+  </div>
+</div>
