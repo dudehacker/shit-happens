@@ -13,3 +13,8 @@
   border: solid 20px red !important;
   margin: 0 !important;
 }
+
+.wrapper{
+  position: relative;
+  margin-top: 10px;
+}

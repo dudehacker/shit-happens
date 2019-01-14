@@ -1,6 +1,6 @@
 <div class="wrapper">
 
-  <div class="menu">
+  <nav>
 
     <div class='header'>
       <h1>Round {{gm.getRound()}}</h1>
@@ -10,9 +10,9 @@
     </div>
 
     <app-leaderboard></app-leaderboard>
-  </div>
+  </nav>
 
-  <div class='content'>
+  <section>
 
 
   <div class="list">
@@ -44,7 +44,9 @@
   </div>
 </div>
 
-<button type="button" class="btn btn-primary btn-lg btn-block" (click)="onClick()">Submit</button>
+<footer>
+  <button type="button" class="btn btn-primary btn-lg btn-block" (click)="onClick()">Submit</button>
+</footer>
 
-  </div>
+  </section>
 </div>
