@@ -9,7 +9,7 @@ export class LeaderboardComponent implements OnInit {
     playerName: string;
     displayedColumns: string[] = ['name', 'score'];
 
-  constructor(private gm: GameManagerService) {
+  constructor(public gm: GameManagerService) {
 
   }
 
