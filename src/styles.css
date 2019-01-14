@@ -1,2 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+.badge.badge-secondary{
+  font-size: 1.2em;
+}
+
+.valid .mat-dialog-container {
+  border: solid 20px green !important;
+  margin: 0 !important;
+}
+
+.invalid .mat-dialog-container{
+  border: solid 20px red !important;
+  margin: 0 !important;
+}

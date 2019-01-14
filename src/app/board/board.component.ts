@@ -78,11 +78,18 @@ export class BoardComponent {
 
   openDialog(valid: boolean): void {
     let _this = this;
+    let className = '';
+    if (valid){
+      className='valid';
+    } else {
+      className='invalid';
+    }
     const dialogRef = this.dialog.open(DialogComponent, {
       data: {
         valid: valid,
         card: _this.newCard
-      }
+      },
+      panelClass: className
     });
 
     dialogRef.afterClosed().subscribe(result => {

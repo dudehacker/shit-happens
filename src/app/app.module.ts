@@ -5,8 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BoardComponent, DialogComponent } from './board/board.component';
 import {GameManagerService} from './services/game-manager.service'
-import {MatButtonModule} from '@angular/material/button';
-import {MatBadgeModule} from '@angular/material/badge';
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -31,7 +29,6 @@ import { ResultComponent } from './result/result.component';
     BrowserModule,
     BrowserAnimationsModule,
     DragDropModule,
-    MatButtonModule,
     MatDialogModule,
     MatGridListModule,
     MatTableModule,

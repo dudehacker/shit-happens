@@ -28,7 +28,7 @@
     [cdkDropListConnectedTo]="[todoList]"
     class="example-list"
     (cdkDropListDropped)="drop($event)">
-    <div class="example-box" [ngClass]="{new: card.visible===false}" *ngFor="let card of hand" cdkDrag>        
+    <div class="example-box" [ngClass]="{new: card.visible===false}" *ngFor="let card of hand" cdkDrag>
         {{card.situation}} <span class="badge badge-secondary" *ngIf="card.visible">{{card.score}}</span>
     </div>
   </div>
@@ -37,7 +37,7 @@
 
   <mat-grid-tile [colspan]="2" [rowspan]="1">
     <div>
-      <button mat-raised-button color="primary" (click)="onClick()">Submit</button>
+      <button type="button" class="btn btn-primary btn-lg" (click)="onClick()">Submit</button>
     </div>
   </mat-grid-tile>
 
