@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import {Card} from '../models/Card';
+import {Card} from '../models/card';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 import {GameManagerService} from '../services/game-manager.service'
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
