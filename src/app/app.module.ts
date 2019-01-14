@@ -32,7 +32,6 @@ import { ResultComponent } from './result/result.component';
     BrowserAnimationsModule,
     DragDropModule,
     MatButtonModule,
-    MatBadgeModule,
     MatDialogModule,
     MatGridListModule,
     MatTableModule,

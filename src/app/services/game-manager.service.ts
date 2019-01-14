@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { cards } from '../models/cards.json' ;
+import { cards as deck1} from '../models/deck1.json' ;
+import { cards as deck2} from '../models/deck2.json' ;
 import {Card} from '../models/card';
 import {Player} from '../models/player';
 
@@ -33,15 +35,25 @@ export class GameManagerService {
   }
 
   initialiseDeck(){
-    // populate the deck
     let _this = this;
-    /*cards.forEach(function (card){
-      _this.deck.push({situation: card.situation, score: card.score, visible: true});
-    });*/
     console.log("loading deck " + _this.gameCounter);
-    for (let i = 0; i < 52; i ++){
-      _this.deck.push({situation: "asdasdasdsa", score: i+1, visible: true});
+    // populate the deck
+
+    let temp = null;
+    if (_this.gameCounter % 2 === 1){
+      temp = deck1;
+    } else {
+      temp = deck2;
     }
+
+    temp.forEach(function (card){
+      _this.deck.push({situation: card.situation, score: card.score, visible: true});
+    });
+
+
+    // for (let i = 0; i < 52; i ++){
+    //   _this.deck.push({situation: "asdasdasdsa", score: i+1, visible: true});
+    // }
     _this.MAX_CARDS = _this.deck.length;
 
     // shuffle the deck

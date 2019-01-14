@@ -28,8 +28,8 @@
     [cdkDropListConnectedTo]="[todoList]"
     class="example-list"
     (cdkDropListDropped)="drop($event)">
-    <div class="example-box" [ngClass]="{new: card.visible===false}" *ngFor="let card of hand" cdkDrag>
-        {{card.situation}}<span matBadge="{{card.score}}" matBadgeOverlap="true" *ngIf="card.visible"></span>
+    <div class="example-box" [ngClass]="{new: card.visible===false}" *ngFor="let card of hand" cdkDrag>        
+        {{card.situation}} <span class="badge badge-secondary" *ngIf="card.visible">{{card.score}}</span>
     </div>
   </div>
     </div>
