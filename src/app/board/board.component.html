@@ -1,3 +1,11 @@
+<h1><span>Round {{gm.getRound()}}</span>   -  {{gm.getCurrentPlayer().name}}</h1>
+<p>Sort cards from 1 to {{gm.MAX_CARDS}}</p>
+<p>First player to {{gm.END_HAND_SIZE}} cards win!!!</p>
+<!-- <div *ngFor="let player of gm.getPlayers(); index as i">
+    Player {{i+1}} - {{player.hand.length}}
+</div> -->
+<hr>
+
 <mat-grid-list cols="2" rowHeight="2:1">
 
   <mat-grid-tile [colspan]="1" [rowspan]="1">
@@ -29,7 +37,8 @@
     class="example-list"
     (cdkDropListDropped)="drop($event)">
     <div class="example-box" [ngClass]="{new: card.visible===false}" *ngFor="let card of hand" cdkDrag>
-        {{card.situation}} <span class="badge badge-secondary" *ngIf="card.visible">{{card.score}}</span>
+        {{card.situation}} <span class="badge badge-secondary">{{card.score}}</span>
+        <!-- {{card.situation}} <span class="badge badge-secondary" *ngIf="card.visible">{{card.score}}</span> -->
     </div>
   </div>
     </div>

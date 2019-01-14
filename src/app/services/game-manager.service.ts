@@ -17,7 +17,7 @@ export class GameManagerService {
   private gameCounter = 1;
   readonly MAX_PLAYERS = 4;
   readonly START_HAND_SIZE = 3;
-  readonly END_HAND_SIZE = 4;
+  readonly END_HAND_SIZE = 7;
   public MAX_CARDS;
 
 
@@ -98,8 +98,8 @@ export class GameManagerService {
   }
 
   checkGameOver(){
-    // console.log(this.getCurrentPlayer().hand.length);
-    return (this.getCurrentPlayer().score === this.END_HAND_SIZE);
+    let timeOut = (this.deck.length === 0);
+    return ((this.getCurrentPlayer().score === this.END_HAND_SIZE) || timeOut);
   }
 
   newGame(){

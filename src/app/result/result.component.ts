@@ -10,14 +10,25 @@ import { Router } from '@angular/router';
 })
 export class ResultComponent {
 
-  readonly winner: Player;
+  readonly winner: string;
 
   constructor(private gm : GameManagerService, private router: Router) {
     this.winner = this.getWinner();
   }
 
-  getWinner():Player{
-    return this.gm.getStats()[0];
+  getWinner():string {
+    let players = this.gm.getStats();
+    let output = players[0].name;
+    let maxScore = players[0].score;
+    for (let i = 1; i < players.length; i++ ){
+      if (players[i].score === maxScore){
+        output += ", " + players[i].name;
+      } else {
+        break;
+      }
+    }
+
+    return output;
   }
 
   newGame(){
