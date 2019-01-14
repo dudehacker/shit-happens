@@ -3,6 +3,7 @@ import {Card} from '../models/card';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 import {GameManagerService} from '../services/game-manager.service'
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-board',
@@ -31,7 +32,8 @@ export class BoardComponent {
     this.sortHand();
   }
 
-  constructor(private gm: GameManagerService, public dialog: MatDialog){
+  constructor(private gm: GameManagerService, public dialog: MatDialog, private router: Router ){
+    console.log("board constructor");
     this.init();
   }
 
@@ -84,8 +86,12 @@ export class BoardComponent {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      _this.gm.endTurn(valid);
-      _this.init();
+      let gameOver = _this.gm.endTurn(valid);
+      if (gameOver){
+        _this.router.navigate(['/result']);
+      } else {
+        _this.init();
+      }
     });
 }
 

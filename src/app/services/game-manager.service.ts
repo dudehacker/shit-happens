@@ -8,23 +8,57 @@ import {Player} from '../models/player';
 })
 export class GameManagerService {
 
-  private deck: Card[] = [];
-  private players: Player[] = [];
+  private deck: Card[];
+  private players: Player[];
   private currPlayer: number;
-  private roundCounter = 1;
+  private roundCounter;
+  private gameCounter = 1;
   readonly MAX_PLAYERS = 4;
   readonly START_HAND_SIZE = 3;
-  readonly END_HAND_SIZE = 7;
+  readonly END_HAND_SIZE = 4;
   readonly MAX_CARDS;
 
 
   constructor() {
+    this.init();
+  }
+
+  init(){
+    this.deck = [];
+    this.players = [];
+    this.currPlayer = 0;
+    this.roundCounter = 1;
     this.initialiseDeck();
-    this.MAX_CARDS = this.deck.length;
     this.initialisePlayers();
   }
 
-  getStats(){
+  initialiseDeck(){
+    // populate the deck
+    let _this = this;
+    /*cards.forEach(function (card){
+      _this.deck.push({situation: card.situation, score: card.score, visible: true});
+    });*/
+    console.log("loading deck " + _this.gameCounter);
+    for (let i = 0; i < 52; i ++){
+      _this.deck.push({situation: "asdasdasdsa", score: i+1, visible: true});
+    }
+    _this.MAX_CARDS = _this.deck.length;
+
+    // shuffle the deck
+    _this.deck.sort(() => (Math.random() > .5) ? 1 : -1);
+  }
+
+  initialisePlayers(){
+    for (let i = 0; i < this.MAX_PLAYERS; i ++){
+      let hand = [];
+      for (let j = 0; j < this.START_HAND_SIZE; j++){
+        hand.push(this.deck.pop());
+      }
+      this.players.push({name: "Team "+(i+1),hand: hand, score: hand.length});
+    }
+  }
+
+  getStats(): Player[]{
     // console.log("getStats() called");
     let sorted = this.players.slice(0);
     sorted.sort(function (a,b) {
@@ -56,13 +90,17 @@ export class GameManagerService {
     return (this.getCurrentPlayer().score === this.END_HAND_SIZE);
   }
 
-  endTurn(valid: boolean){
+  newGame(){
+    this.gameCounter++;
+    this.init();
+  }
+
+  endTurn(valid: boolean):boolean{
     if (valid){
       this.getCurrentPlayer().score++;
     }
     if (this.checkGameOver()){
-      //TODO end the game
-      return;
+      return true;
     }
     // update current player index
     if (this.currPlayer < this.MAX_PLAYERS - 1){
@@ -71,32 +109,7 @@ export class GameManagerService {
       this.currPlayer=0;
       this.roundCounter++;
     }
-  }
-
-  initialiseDeck(){
-    // populate the deck
-    let _this = this;
-    /*cards.forEach(function (card){
-      _this.deck.push({situation: card.situation, score: card.score, visible: true});
-    });*/
-
-    for (let i = 0; i < 52; i ++){
-      this.deck.push({situation: "asdasdasdsa", score: i+1, visible: true});
-    }
-
-    // shuffle the deck
-    this.deck.sort(() => (Math.random() > .5) ? 1 : -1);
-  }
-
-  initialisePlayers(){
-    for (let i = 0; i < this.MAX_PLAYERS; i ++){
-      let hand = [];
-      for (let j = 0; j < this.START_HAND_SIZE; j++){
-        hand.push(this.deck.pop());
-      }
-      this.players.push({name: "Team "+(i+1),hand: hand, score: hand.length});
-    }
-    this.currPlayer = 0;
+    return false;
   }
 
 }
