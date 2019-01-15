@@ -5,3 +5,9 @@
 .underline{
   font-weight: bold;
 }
+
+button{
+  margin-left: 5%;
+  margin-right: 5%;
+  width: 40%;
+}

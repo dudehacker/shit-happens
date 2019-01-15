@@ -33,6 +33,6 @@ export class ResultComponent {
 
   newGame(){
     this.gm.newGame();
-    this.router.navigate(['/game']);
+    this.router.navigate(['/']);
   }
 }

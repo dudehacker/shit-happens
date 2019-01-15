@@ -15,17 +15,16 @@ export class GameManagerService {
   private currPlayer: number;
   private roundCounter;
   private gameCounter = 1;
-  readonly MAX_PLAYERS = 4;
+  private MAX_PLAYERS;
   readonly START_HAND_SIZE = 3;
   readonly END_HAND_SIZE = 7;
   public MAX_CARDS;
 
 
-  constructor() {
-    this.init();
-  }
+  constructor() {}
 
-  init(){
+  init(n: number){
+    this.MAX_PLAYERS = n;
     this.deck = [];
     this.players = [];
     this.currPlayer = 0;
@@ -104,7 +103,6 @@ export class GameManagerService {
 
   newGame(){
     this.gameCounter++;
-    this.init();
   }
 
   endTurn(valid: boolean):boolean{
