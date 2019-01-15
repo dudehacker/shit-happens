@@ -6,6 +6,11 @@
   font-weight: bold;
 }
 
+.btn-warning{
+  margin-left: 30%;
+  margin-right: 30%;
+}
+
 button{
   margin-top: 20px;
   margin-left: 5%;

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { cards } from '../models/cards.json' ;
+import { cards as demoDeck } from '../models/cards.json' ;
 import { cards as deck1} from '../models/deck1.json' ;
 import { cards as deck2} from '../models/deck2.json' ;
 import {Card} from '../models/card';
@@ -14,21 +14,25 @@ export class GameManagerService {
   private players: Player[];
   private currPlayer: number;
   private roundCounter;
-  private gameCounter = 1;
+  private gameCounter = 0;
   private MAX_PLAYERS;
   readonly START_HAND_SIZE = 3;
-  readonly END_HAND_SIZE = 7;
+  public END_HAND_SIZE = 7;
   public MAX_CARDS;
 
 
   constructor() {}
 
   init(n: number){
+    if (n !== 1){
+      this.gameCounter++;
+    }
     this.MAX_PLAYERS = n;
     this.deck = [];
     this.players = [];
     this.currPlayer = 0;
     this.roundCounter = 1;
+    this.END_HAND_SIZE = 7;
     this.initialiseDeck();
     this.initialisePlayers();
   }
@@ -39,7 +43,11 @@ export class GameManagerService {
     // populate the deck
 
     let temp = null;
-    if (_this.gameCounter % 2 === 1){
+    if (_this.gameCounter === 0){
+      temp = demoDeck;
+      _this.END_HAND_SIZE = 5;
+    }
+    else if (_this.gameCounter % 2 === 1){
       temp = deck1;
     } else {
       temp = deck2;
@@ -49,10 +57,6 @@ export class GameManagerService {
       _this.deck.push({situation: card.situation, score: card.score, visible: true});
     });
 
-
-    // for (let i = 0; i < 52; i ++){
-    //   _this.deck.push({situation: "asdasdasdsa", score: i+1, visible: true});
-    // }
     _this.MAX_CARDS = _this.deck.length;
 
     // shuffle the deck
@@ -99,10 +103,6 @@ export class GameManagerService {
   checkGameOver(){
     let timeOut = (this.deck.length === 0);
     return ((this.getCurrentPlayer().score === this.END_HAND_SIZE) || timeOut);
-  }
-
-  newGame(){
-    this.gameCounter++;
   }
 
   endTurn(valid: boolean):boolean{

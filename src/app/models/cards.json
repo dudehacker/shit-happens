@@ -1,8 +1,10 @@
 {
   "cards": [
-    {"situation": "Get up", "score": 2},
-    {"situation": "Brush teeth", "score": 3},
-    {"situation": "Take a shower", "score": 4},
-    {"situation": "Check e-mail", "score": 5}
+    {"situation": "You lose 1$", "score": 1},
+    {"situation": "You lose 2$", "score": 2},
+    {"situation": "You lose 3$", "score": 3},
+    {"situation": "You lose 4$", "score": 4},
+    {"situation": "You lose 5$", "score": 5},
+    {"situation": "You lose 6$", "score": 6}
   ]
 }
