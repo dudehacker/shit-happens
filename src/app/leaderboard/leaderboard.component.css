@@ -1,3 +1,8 @@
 .mat-column-score {
   text-align: right;
 }
+
+.table.table-dark {
+  background-color: white;
+  color: black;
+}

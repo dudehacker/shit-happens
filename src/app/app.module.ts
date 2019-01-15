@@ -6,10 +6,8 @@ import { AppComponent } from './app.component';
 import { BoardComponent, DialogComponent } from './board/board.component';
 import {GameManagerService} from './services/game-manager.service'
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
-import {MatDialogModule} from '@angular/material/dialog';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatTableModule} from '@angular/material/table';
-import {MatGridListModule} from '@angular/material/grid-list';
+import { MatDialogModule} from '@angular/material/dialog';
+import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { HomeComponent } from './home/home.component';
 import { ResultComponent } from './result/result.component';
 
@@ -30,8 +28,6 @@ import { ResultComponent } from './result/result.component';
     BrowserAnimationsModule,
     DragDropModule,
     MatDialogModule,
-    MatGridListModule,
-    MatTableModule,
     AppRoutingModule
   ],
   providers: [GameManagerService],
