@@ -50,7 +50,7 @@ section{
 }
 
 .example-box.cdk-drag{
-    font-size: 1.2em;
+    font-size: 1.7em;
     background-color: #abffdf
 }
 
@@ -65,7 +65,7 @@ section{
   box-sizing: border-box;
   cursor: move;
   background: white;
-  font-size: 14px;
+  font-size: 1.5em;
 }
 
 .cdk-drag-preview {
